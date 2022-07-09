@@ -14,6 +14,13 @@ body.registerLogin {
     background-color: var(--cu-color);
     color: var(--base-black);
 }
+a {
+    text-decoration: none;
+    color: var(--cu-color);
+}
+a:hover {
+    color: var(--base-black);
+}
 
 
 

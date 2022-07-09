@@ -10,8 +10,14 @@ class LayoutController extends AbstractController
     #[Route('/layout', name: 'app_layout')]
     public function index()
     {
+        if($this->getUser())
+        {
+            $name = $this->getUser()->getUserName();
+        } else {
+            $name = 'Entrar';
+        }
         return array(
-        'header' => rand(1,100),
+        'header' => $name,
         'footer' => 'Fecha '.date('d-m')
         );
     }
