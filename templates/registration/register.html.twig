@@ -13,6 +13,14 @@
                     <div class="formContent">
                         {{ form_start(registrationForm) }}
                         <div class="mb-3">
+                            {{ form_label(registrationForm.user_name) }}
+                            {{ form_widget(registrationForm.user_name) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.user_lastname) }}
+                            {{ form_widget(registrationForm.user_lastname) }}
+                        </div>
+                        <div class="mb-3">
                             {{ form_label(registrationForm.email) }}
                             {{ form_widget(registrationForm.email) }}
                         </div>

@@ -35,6 +35,7 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setDateAdd(new \DateTimeImmutable());
+            $user->setToken(md5($user->getEmail().date('Y-m-d')));
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email

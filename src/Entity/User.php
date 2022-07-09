@@ -42,6 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $date_update;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $token;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -168,6 +171,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDateUpdate(?\DateTimeImmutable $date_update): self
     {
         $this->date_update = $date_update;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
