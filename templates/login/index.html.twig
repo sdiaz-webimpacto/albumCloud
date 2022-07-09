@@ -1,0 +1,43 @@
+{% extends 'registrationLogin.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <div class="container-fluid mt-5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-10 col-lg-6 d-flex flex-column py-3 bg-white co-black">
+                    <div class="title text-center">
+                        <h5 class="titleText">¡Bienvenido!</h5>
+                    </div>
+                    {% if advice != '' %}
+                    <div class="alert alert-success">
+                        {{ advice }}
+                    </div>
+                    {% endif %}
+                    <div class="formContent">
+                        <form action="{{ path('app_login') }}" method="post">
+                            <div class="mb-3">
+                                <label for="username">Email:</label>
+                                <input class="form-control col-8 col-md-6" type="text" id="username" name="_username" value="{{ last_username }}"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">Password:</label>
+                                <input class="form-control col-8 col-md-6" type="password" id="password" name="_password"/>
+                            </div>
+
+                            {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"/> #}
+
+                            <button class="btn btn-primary" type="submit">login</button>
+                            <p class="bridgeText text-right">¿Aún no tienes cuenta? <a href="{{ path('app_register') }}">Regístrate</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'registrationLogin.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-10 col-lg-6 d-flex flex-column py-3 bg-white co-black">
+                    <div class="title text-center">
+                        <h5 class="titleText">New user</h5>
+                    </div>
+                    <div class="formContent">
+                        {{ form_start(registrationForm) }}
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.email) }}
+                            {{ form_widget(registrationForm.email) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.plainPassword) }}
+                            {{ form_widget(registrationForm.plainPassword) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(registrationForm.agreeTerms) }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        {{ form_end(registrationForm) }}
+                        <p class="bridgeText text-right">Si ya tienes cuenta... <a href="{{ path('app_login') }}">Accede</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
