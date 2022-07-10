@@ -1,0 +1,26 @@
+<div class="col-xs-12">
+    <h3>Datos personales</h3>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" class="form-control" value="{{ user.getUserName() }}" placeholder="Your name" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="surname">Apellidos:</label>
+            <input type="text" class="form-control" value="{{ user.getUserLastname() }}" placeholder="Your last name" id="surname" name="surname">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" value="{{ user.email }}" placeholder="Enter email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" placeholder="Into your password" id="password" name="password">
+        </div>
+        <div class="form-group mt-4">
+            <button class="btn btn-primary mb-2">
+                ACTUALIZAR
+            </button>
+        </div>
+    </form>
+</div>

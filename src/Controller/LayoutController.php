@@ -12,12 +12,13 @@ class LayoutController extends AbstractController
     {
         if($this->getUser())
         {
-            $name = $this->getUser()->getUserName();
+            $name = $this->getUser();
         } else {
             $name = 'Entrar';
         }
         return array(
-        'header' => $name,
+        'header' => $name->getUserName(),
+        'user' => $name,
         'footer' => 'Fecha '.date('d-m')
         );
     }

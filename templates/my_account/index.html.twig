@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PhotoAlbums MyAccount{% endblock %}
+{% block description %}Datos personales y opciones de los albumes{% endblock %}
+{% block keywords %}fotos, album, visualiza, crea tus fotos, fotos en cualquier parte del mundo{% endblock %}
+
+{% block body %}
+    <div id="myAccount" class="container-fluid mt-5 mb-5">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="albums-tab" data-bs-toggle="tab" data-bs-target="#albums-tab-pane" type="button" role="tab" aria-controls="albums-tab-pane" aria-selected="true">Todos mis albumes</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" type="button" role="tab" aria-controls="admin-tab-pane" aria-selected="false">Albumes que administro</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Mi perfil</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="albums-tab-pane" role="tabpanel" aria-labelledby="albums-tab" tabindex="0">...</div>
+                    <div class="tab-pane fade" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">...</div>
+                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        {% include "my_account/profile.html.twig" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

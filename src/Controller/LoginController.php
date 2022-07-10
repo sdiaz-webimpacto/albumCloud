@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Utility\AlertModal;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,10 @@ class LoginController extends AbstractController
         }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-
+        if($error)
+        {
+            AlertModal::printModal('Alguno de los datos no son correctos', 'error');
+        }
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
         if(isset($_GET['success']))
