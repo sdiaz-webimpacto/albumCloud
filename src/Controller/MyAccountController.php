@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Albumes;
 use App\Entity\User;
 use App\Utility\AlertModal;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,6 +34,12 @@ class MyAccountController extends LayoutController
             return $this->redirectToRoute('app_login');
         }
         $data = parent::index();
+        $albumes = $this->getUser()->getAlbumes();
+
+        foreach($albumes as $key => $album)
+        {
+            $data['albumes'][$key] = $album;
+        }
         $data['datos'] = 'Datos de este controlador';
         return $this->render('my_account/index.html.twig', $data);
     }

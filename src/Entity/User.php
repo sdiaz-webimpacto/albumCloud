@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -44,6 +46,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255)]
     private $token;
+
+    #[ORM\ManyToMany(targetEntity: Albumes::class, mappedBy: 'album_users')]
+    private $albumes;
+
+    public function __construct()
+    {
+        $this->albumes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -183,6 +193,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setToken(string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Albumes>
+     */
+    public function getAlbumes(): Collection
+    {
+        return $this->albumes;
+    }
+
+    public function addAlbume(Albumes $albume): self
+    {
+        if (!$this->albumes->contains($albume)) {
+            $this->albumes[] = $albume;
+            $albume->addAlbumUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlbume(Albumes $albume): self
+    {
+        if ($this->albumes->removeElement($albume)) {
+            $albume->removeAlbumUser($this);
+        }
 
         return $this;
     }
