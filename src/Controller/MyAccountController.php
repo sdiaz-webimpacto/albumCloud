@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Albumes;
+use App\Entity\AlbumesAdmin;
 use App\Entity\User;
 use App\Utility\AlertModal;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,6 +29,7 @@ class MyAccountController extends LayoutController
     #[Route('/my/account', name: 'app_my_account')]
     public function index(): Response
     {
+        $em = $this->entityManager;
         $this->processForm();
         if(empty($this->getUser()))
         {
@@ -35,11 +37,29 @@ class MyAccountController extends LayoutController
         }
         $data = parent::index();
         $albumes = $this->getUser()->getAlbumes();
+        $conn = $em->getConnection();
+        $albumesAdmin =
+            'SELECT a.albumes_id FROM  albumes_admin_albumes a
+            LEFT JOIN albumes_admin_user b ON (a.albumes_admin_id = b.albumes_admin_id)
+            WHERE b.user_id = '.$this->getUser()->getId()
+        ;
+        $stmt = $conn->prepare($albumesAdmin);
+        $query = $stmt->executeQuery();
+        $results = $query->fetchAllAssociative();
+        $admins = array();
+
+        foreach($results as $result)
+        {
+            $albunFinded = $em->getRepository(Albumes::class)->find($result['albumes_id']);
+            $admins[] = $albunFinded;
+        }
 
         foreach($albumes as $key => $album)
         {
             $data['albumes'][$key] = $album;
         }
+
+        $data['admins'] = $admins;
         $data['datos'] = 'Datos de este controlador';
         return $this->render('my_account/index.html.twig', $data);
     }

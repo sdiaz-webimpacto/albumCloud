@@ -50,9 +50,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Albumes::class, mappedBy: 'album_users')]
     private $albumes;
 
+    #[ORM\ManyToMany(targetEntity: AlbumesAdmin::class, mappedBy: 'id_user')]
+    private $albumesAdmins;
+
     public function __construct()
     {
         $this->albumes = new ArrayCollection();
+        $this->albumesAdmins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -219,6 +223,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->albumes->removeElement($albume)) {
             $albume->removeAlbumUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AlbumesAdmin>
+     */
+    public function getAlbumesAdmins(): Collection
+    {
+        return $this->albumesAdmins;
+    }
+
+    public function addAlbumesAdmin(AlbumesAdmin $albumesAdmin): self
+    {
+        if (!$this->albumesAdmins->contains($albumesAdmin)) {
+            $this->albumesAdmins[] = $albumesAdmin;
+            $albumesAdmin->addIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlbumesAdmin(AlbumesAdmin $albumesAdmin): self
+    {
+        if ($this->albumesAdmins->removeElement($albumesAdmin)) {
+            $albumesAdmin->removeIdUser($this);
         }
 
         return $this;

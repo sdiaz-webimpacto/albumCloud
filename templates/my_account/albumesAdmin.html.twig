@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th colspan="3">
-                <h3>Todos los albumes a los que tengo acceso</h3>
+                <h3>Todos los albumes que administro</h3>
             </th>
         </tr>
         <tr>
@@ -13,11 +13,11 @@
         </tr>
         </thead>
         <tbody>
-        {% for album in albumes %}
+        {% for albumAdmin in admins %}
             <tr>
-                <td style="width: 25%;">{{ album.title }}</td>
-                <td style="width: 50%;">{{ album.getAlbumName() }}</td>
-                <td style="width: 25%;"><img src="{{ asset('img/user/') }}{{ album.getAlbumBanner() }}" width="100%" alt="banner"></td>
+                <td style="width: 25%;">{{ albumAdmin.title }}</td>
+                <td style="width: 50%;">{{ albumAdmin.getAlbumName() }}</td>
+                <td style="width: 25%;"><img src="{{ asset('img/user/') }}{{ albumAdmin.getAlbumBanner() }}" width="100%" alt="banner"></td>
             </tr>
         {% endfor %}
 
