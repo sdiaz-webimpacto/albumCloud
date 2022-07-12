@@ -5,5 +5,43 @@
 {% block keywords %}fotos, album, visualiza, crea tus fotos, fotos en cualquier parte del mundo{% endblock %}
 
 {% block body %}
-<p>Este es el cuerpo de la home de la aplicación</p>
+<div id="home" class="container-fluid mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <h2 class="sectionTitle">Tus últimas fotos añadidas</h2>
+                <div class="slider-home">
+                    <div class="sliderContainer">
+                        <div style="background-image: url('{{ asset('img/user/ib01.jpg') }}');">
+                            <p>Foto de prueba maquetación</p>
+                        </div>
+                    </div>
+                    <div class="sliderContainer">
+                        <div style="background-image: url('{{ asset('img/user/ib02.jpg') }}');">
+                            <p>Foto de prueba maquetación</p>
+                        </div>
+                    </div>
+                    <div class="sliderContainer">
+                        <div style="background-image: url('{{ asset('img/user/ib03.jpg') }}');">
+                            <p>Foto de prueba maquetación</p>
+                        </div>
+                    </div>
+                    <div class="sliderContainer">
+                        <div style="background-image: url('{{ asset('img/user/ib04.jpg') }}');">
+                            <p>Foto de prueba maquetación</p>
+                        </div>
+                    </div>
+                    <div class="sliderContainer">
+                        <div style="background-image: url('{{ asset('img/user/ib05.jpg') }}');">
+                            <p>Foto de prueba maquetación</p>
+                        </div>
+                    </div>
+                    <div class="sliderContainer">
+                        <div style="background-image: url('{{ asset('img/user/ib06.jpg') }}');">
+                            <p>Foto de prueba maquetación</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

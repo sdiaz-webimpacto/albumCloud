@@ -33,9 +33,13 @@ class Albumes
     #[ORM\Column(type: 'datetime_immutable')]
     private $date_add;
 
+    #[ORM\OneToMany(mappedBy: 'photo_album', targetEntity: Photos::class)]
+    private $photos;
+
     public function __construct()
     {
         $this->album_users = new ArrayCollection();
+        $this->phptp_path = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,6 +127,36 @@ class Albumes
     public function setDateAdd(\DateTimeImmutable $date_add): self
     {
         $this->date_add = $date_add;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Photos>
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(Photos $photo): self
+    {
+        if (!$this->photos->contains($photo)) {
+            $this->photos[] = $photo;
+            $photo->setPhotoAlbum($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Photos $photo): self
+    {
+        if ($this->photos->removeElement($photo)) {
+            // set the owning side to null (unless already changed)
+            if ($photo->getPhotoAlbum() === $this) {
+                $photo->setPhotoAlbum(null);
+            }
+        }
 
         return $this;
     }

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Permanent+Marker&display=swap');
+/**
+VARS
+ */
 :root {
     --pr-color: #C2DED1;
     --se-color: #ECE5C7;
@@ -6,9 +10,14 @@
     --base-black: #0C0B09;
     --base-white: #FCFAF7;
 }
+
+/**
+GENERIC
+ */
 body {
     background-color: var(--base-white);
     color: var(--base-black);
+    font-family: Handlee, Arial, sans-serif;
 }
 body.registerLogin {
     background-color: var(--cu-color);
@@ -37,7 +46,9 @@ a:hover {
 
 
 
-
+/**
+BUTTONS
+ */
 .btn-primary {
     border-radius: 0;
     background-color: var(--pr-color);
@@ -67,6 +78,9 @@ button.swal2-styled.swal2-confirm:hover, button.swal2-styled.swal2-confirm:focus
 
 
 
+/**
+CUSTOM TEXTS
+ */
 .bg-white {
     background-color: var(--base-white);
 }
@@ -82,13 +96,21 @@ button.swal2-styled.swal2-confirm:hover, button.swal2-styled.swal2-confirm:focus
 .text-right {
     text-align: right;
 }
+.sectionTitle {
+    font-family:'Permanent Marker', Arial, sans-serif;
+    border-bottom: 0.2rem solid black;
+    line-height: 26px;
+    font-size: 1.7rem;
+}
 
 
 
 
 
 
-
+/**
+CONCRETE DIVS
+ */
 .headerDiv {
     padding: 1rem 2rem;
     background-color: var(--pr-color);
@@ -99,6 +121,97 @@ button.swal2-styled.swal2-confirm:hover, button.swal2-styled.swal2-confirm:focus
     background-color: var(--cu-color);
     border-top: 4px solid var(--te-color);
     color: var(--base-white);
+}
+
+
+
+
+/**
+SLIDERS
+ */
+.sliderContainer div{
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position:center;
+    display: flex;
+    align-items: end;
+}
+.sliderContainer div p{
+    color: var(--base-white);
+    margin-left: 1.5rem;
+}
+.slick-prev, .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 300px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border:transparent;
+    border-top: 3px solid var(--cu-color);
+    border-left: 3px solid var(--cu-color);
+    outline: none;
+    background: transparent;
+}
+.slick-prev {
+    left: -25px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.slick-next {
+    right: -25px;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(135deg);
+}
+.slick-prev:hover, .slick-next:hover {
+    border-top: 4px solid var(--pr-color);
+    border-left: 4px solid var(--pr-color);
+}
+.slick-dots {
+    position: absolute;
+    bottom: -25px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    padding: 2px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: var(--cu-color);
+    border-radius: 50%;
+}
+.slick-dots li.slick-active button {
+    background-color: var(--pr-color);
 }
 
 
