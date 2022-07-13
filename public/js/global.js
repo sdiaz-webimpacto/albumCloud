@@ -4,6 +4,8 @@ $('.slider-home').slick({
     speed: 500,
     fade: true,
     cssEase: 'linear',
+    autoplay: true,
+    autoplaySpeed: 4000,
 });
 getHeight();
 function getHeight()

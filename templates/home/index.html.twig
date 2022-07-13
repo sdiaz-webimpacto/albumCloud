@@ -10,36 +10,13 @@
         <div class="row">
             <h2 class="sectionTitle">Tus últimas fotos añadidas</h2>
                 <div class="slider-home">
-                    <div class="sliderContainer">
-                        <div style="background-image: url('{{ asset('img/user/ib01.jpg') }}');">
-                            <p>Foto de prueba maquetación</p>
+                    {% for photo in photos %}
+                        <div class="sliderContainer">
+                            <div style="background-image: url('{{ asset('img/user/') }}{{ photo.getPhotoPath() }}');">
+                                <p>{{ photo.getName() }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="sliderContainer">
-                        <div style="background-image: url('{{ asset('img/user/ib02.jpg') }}');">
-                            <p>Foto de prueba maquetación</p>
-                        </div>
-                    </div>
-                    <div class="sliderContainer">
-                        <div style="background-image: url('{{ asset('img/user/ib03.jpg') }}');">
-                            <p>Foto de prueba maquetación</p>
-                        </div>
-                    </div>
-                    <div class="sliderContainer">
-                        <div style="background-image: url('{{ asset('img/user/ib04.jpg') }}');">
-                            <p>Foto de prueba maquetación</p>
-                        </div>
-                    </div>
-                    <div class="sliderContainer">
-                        <div style="background-image: url('{{ asset('img/user/ib05.jpg') }}');">
-                            <p>Foto de prueba maquetación</p>
-                        </div>
-                    </div>
-                    <div class="sliderContainer">
-                        <div style="background-image: url('{{ asset('img/user/ib06.jpg') }}');">
-                            <p>Foto de prueba maquetación</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
         </div>
     </div>

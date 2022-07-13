@@ -15,8 +15,23 @@ class HomeController extends LayoutController
         {
             return $this->redirectToRoute('app_login');
         }
+        $user = $this->getUser();
+        $photos = $user->getPhotos();
+        $userPhotos = array();
+        if(count($photos) >= 10)
+        {
+            $num = 10;
+        } else {
+            $num = count($photos);
+        }
+
+        for($i = count($photos) - 1; $i >= count($photos) - $num; $i--)
+        {
+            $userPhotos[] = $photos[$i];
+        }
+
         $data = parent::index();
-        $data['datos'] = 'Datos de este controlador';
+        $data['photos'] = $userPhotos;
         return $this->render('home/index.html.twig', $data);
     }
 }
