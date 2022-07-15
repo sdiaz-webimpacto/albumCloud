@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Utility\AlertModal;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -21,13 +22,12 @@ class MyAccountController extends LayoutController
 
     public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher)
     {
-        // 3. Actualice el valor de la variable privada entityManager mediante inyección.
         $this->entityManager = $entityManager;
         $this->userPasswordHasher = $userPasswordHasher;
     }
 
     #[Route('/my/account', name: 'app_my_account')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $em = $this->entityManager;
         $this->processForm();
@@ -35,7 +35,7 @@ class MyAccountController extends LayoutController
         {
             return $this->redirectToRoute('app_login');
         }
-        $data = parent::index();
+        $data = parent::index($request);
         $albumes = $this->getUser()->getAlbumes();
         $conn = $em->getConnection();
         $albumesAdmin =

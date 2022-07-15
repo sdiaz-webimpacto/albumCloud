@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LayoutController extends AbstractController
 {
     #[Route('/layout', name: 'app_layout')]
-    public function index()
+    public function index(Request $request)
     {
         if($this->getUser())
         {

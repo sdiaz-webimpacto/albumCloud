@@ -101,6 +101,7 @@ CUSTOM TEXTS
     border-bottom: 0.2rem solid black;
     line-height: 26px;
     font-size: 1.7rem;
+    margin-top: 3rem;
 }
 
 
@@ -121,6 +122,10 @@ CONCRETE DIVS
     background-color: var(--cu-color);
     border-top: 4px solid var(--te-color);
     color: var(--base-white);
+}
+.imagen {
+    float: left;
+    padding: 0.5rem 1rem;
 }
 
 

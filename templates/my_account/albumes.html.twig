@@ -17,7 +17,11 @@
             <tr>
                 <td style="width: 25%;">{{ album.title }}</td>
                 <td style="width: 50%;">{{ album.getAlbumName() }}</td>
-                <td style="width: 25%;"><img src="{{ asset('img/user/') }}{{ album.getAlbumBanner() }}" width="100%" alt="banner"></td>
+                <td style="width: 25%;">
+                    <a href="{{ url('app_album', {'id':album.getId()}) }}">
+                        <img src="{{ asset('img/user/') }}{{ album.getAlbumBanner() }}" width="100%" alt="banner">
+                    </a>
+                </td>
             </tr>
         {% endfor %}
 

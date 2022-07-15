@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AlbumCloud Albu,{% endblock %}
+{% block description %}Visualiza todas las fotos de tu album{% endblock %}
+{% block keywords %}fotos, album, visualiza, crea tus fotos, fotos en cualquier parte del mundo{% endblock %}
+
+{% block body %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% for photo in photos %}
+                        <div class="col-12 col-md-6 col-lg-4 imagen">
+                            <figure>
+                                <img src="{{ asset('img/user/') }}{{ photo.getPhotoPath() }}" alt="{{ photo.getName() }}" style="width:100%">
+                                <figcaption>{{ photo.getName() }}</figcaption>
+                            </figure>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
