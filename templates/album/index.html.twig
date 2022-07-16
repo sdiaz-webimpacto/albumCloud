@@ -1,24 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AlbumCloud Albu,{% endblock %}
+{% block title %}AlbumCloud Album{% endblock %}
 {% block description %}Visualiza todas las fotos de tu album{% endblock %}
 {% block keywords %}fotos, album, visualiza, crea tus fotos, fotos en cualquier parte del mundo{% endblock %}
 
 {% block body %}
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    {% for photo in photos %}
-                        <div class="col-12 col-md-6 col-lg-4 imagen">
+<div class="container-fluid bannerSection" style="background-image: url('{{ asset('img/user/') }}{{ banner }}')">
+    <div class="bannerIcon">
+        <img src="{{ asset('img/flags/') }}{{ icon }}">
+    </div>
+    <h1 class="bannerText">
+            {{ title }}
+    </h1>
+</div>
+<div class="container d-flex justify-content-center mb-5">
+    <div class="slider-album">
+        {% for photo in photos %}
+            <div class="sliderContainer">
+                <div style="background-image: url('{{ asset('img/user/') }}{{ photo.getPhotoPath() }}');">
+                    <p>{{ photo.getName() }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="sectionTitle">Todas las fotos del abum</h2>
+                <p class="aclaration">
+                    Haz click sobre cualquiera de ellas para verla en pantalla completa.
+                </p>
+                {% for photo in photos %}
+                    <div class="col-12 col-md-6 col-lg-4 imagen">
+                        <a href="" class="getPhoto" data-bs-toggle="modal" data-bs-target="#photoAllScreen" data-photo-url="{{ asset('img/user/') }}{{ photo.getPhotoPath() }}">
                             <figure>
                                 <img src="{{ asset('img/user/') }}{{ photo.getPhotoPath() }}" alt="{{ photo.getName() }}" style="width:100%">
                                 <figcaption>{{ photo.getName() }}</figcaption>
                             </figure>
-                        </div>
-                    {% endfor %}
-                </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-
+    </div>
+</div>
 {% endblock %}

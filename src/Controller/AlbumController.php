@@ -28,8 +28,14 @@ class AlbumController extends LayoutController
         $em = $this->entityManager;
         $id = $request->get('id');
         $album = $em->getRepository(Albumes::class)->find($id);
+        $icon = $album->getIcon();
+        $title = $album->getTitle();
+        $banner = $album->getAlbumBanner();
         $data = parent::index($request);
         $data['photos'] = $album->getPhotos();
+        $data['icon'] = $icon;
+        $data['title'] = $title;
+        $data['banner'] = $banner;
         return $this->render('album/index.html.twig', $data);
     }
 }

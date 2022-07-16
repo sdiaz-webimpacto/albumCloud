@@ -103,6 +103,18 @@ CUSTOM TEXTS
     font-size: 1.7rem;
     margin-top: 3rem;
 }
+.bannerText {
+    margin-bottom: 0;
+    margin-left: 1rem;
+    font-weight: 600;
+    font-size: 3rem;
+    color: var(--base-white);
+}
+.aclaration {
+    opacity: .8;
+    font-size: .9rem;
+    font-style: italic;
+}
 
 
 
@@ -127,6 +139,21 @@ CONCRETE DIVS
     float: left;
     padding: 0.5rem 1rem;
 }
+.bannerSection {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bannerIcon {
+    width: 75px;
+    height: 50px;
+}
+.bannerIcon img {
+    width: 100%;
+}
 
 
 
@@ -141,6 +168,9 @@ SLIDERS
     background-position:center;
     display: flex;
     align-items: end;
+}
+.slider-album .sliderContainer div{
+    height: 360px;
 }
 .sliderContainer div p{
     color: var(--base-white);
@@ -217,6 +247,32 @@ SLIDERS
 }
 .slick-dots li.slick-active button {
     background-color: var(--pr-color);
+}
+.slider-album {
+    width: 74%;
+    margin-top: -100px;
+    border-radius: 16px;
+    border: 5px solid var(--te-color);
+}
+.slider-album .sliderContainer div {
+    border-radius: 10px;
+}
+.slider-album .slick-prev, .slider-album .slick-next {
+    top: 180px;
+}
+
+
+
+
+
+/**
+MODALS
+ */
+#photoAllScreenModalDialog button.btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px 5px;
 }
 
 
