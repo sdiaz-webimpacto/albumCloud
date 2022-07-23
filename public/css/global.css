@@ -154,6 +154,48 @@ CONCRETE DIVS
 .bannerIcon img {
     width: 100%;
 }
+.bannerOptions {
+    position: absolute;
+    margin-top: 100px;
+}
+.bannerOptions a {
+    color: var(--base-white);
+    font-size: 1.5rem;
+    -webkit-text-stroke: 1px var(--cu-color);
+}
+.drop-area {
+    border: 2px dashed var(--base-black);
+    height: 15rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.drop-area.active {
+    border: 3px dashed var(--cu-color);
+    background-color: var(--te-color);
+}
+#preview-files {
+    width: 80%;
+    margin-top: 1.25rem;
+}
+#preview-files div {
+    margin-top: .5rem;
+    display: flex;
+}
+#preview-files div .status {
+    margin-left: .75rem;
+}
+#preview-files div .status-text {
+    color: var(--base-black);
+    font-weight: 600;
+    margin-left: .5rem;
+}
+#preview-files div .status-text.uploaded {
+    color: forestgreen;
+}
+
 
 
 

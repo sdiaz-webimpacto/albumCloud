@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AlbumCloud Album{% endblock %}
+{% block description %}Visualiza todas las fotos de tu album{% endblock %}
+{% block keywords %}fotos, album, visualiza, crea tus fotos, fotos en cualquier parte del mundo{% endblock %}
+
+{% block body %}
+    <div class="container-fluid addPhotos mt-5 mb-5">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <h1 class="sectionTitle mb-4">
+                    Añadir fotos a este album
+                </h1>
+                <div class="drop-area">
+                    <h2>Arrastra y suelta tus archivos</h2>
+                    <span>O</span>
+                    <button class="btn btn-primary">Selecciona tus archivos</button>
+                    <input type="file" name="input-file-addPhoto" id="input-file-addPhoto" hidden multiple>
+                </div>
+                <div id="preview-files">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extraJs %}
+    <script src="{{ asset('js/addPhotos.js') }}"></script>
+{% endblock %}

@@ -6,6 +6,14 @@
 
 {% block body %}
 <div class="container-fluid bannerSection" style="background-image: url('{{ asset('img/user/') }}{{ banner }}')">
+    <div class="bannerOptions">
+        <a href="?addPhotos={{ album_id }}">
+            <i class="fa fa-plus-circle"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-cogs"></i>
+        </a>
+    </div>
     <div class="bannerIcon">
         <img src="{{ asset('img/flags/') }}{{ icon }}">
     </div>
