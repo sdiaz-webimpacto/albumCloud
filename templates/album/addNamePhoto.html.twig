@@ -1,0 +1,9 @@
+{% if user.id is same as(photo.getPhotoOwner().id) and photo.name == null %}
+    <label class="info">Ponga un nombre a esta foto. (Entre 3 y 50 carácteres. Sólo letras y números.</label>
+    <input class="w-100 mb-1" type="text" id="photoName-{{ photo.id }}" placeholder="Nombre de la foto">
+    <button class="btn btn-primary" id="photoNameButton" onclick="addPhotoName({{ photo.id }})">Enviar</button>
+
+    {% block extraJs %}
+        <script src="{{ asset('js/addPhotoName.js') }}"></script>
+    {% endblock %}
+{% endif %}

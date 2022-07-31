@@ -42,12 +42,16 @@
                 </p>
                 {% for photo in photos %}
                     <div class="col-12 col-md-6 col-lg-4 imagen">
-                        <a href="" class="getPhoto" data-bs-toggle="modal" data-bs-target="#photoAllScreen" data-photo-url="{{ asset('img/user/') }}{{ photo.getPhotoPath() }}">
-                            <figure>
+                        <figure>
+                            <a href="" class="getPhoto" data-bs-toggle="modal" data-bs-target="#photoAllScreen" data-photo-url="{{ asset('img/user/') }}{{ photo.getPhotoPath() }}">
                                 <img src="{{ asset('img/user/') }}{{ photo.getPhotoPath() }}" alt="{{ photo.getName() }}" style="width:100%">
+                            </a>
+                            {% if photo.getName() != '' %}
                                 <figcaption>{{ photo.getName() }}</figcaption>
-                            </figure>
-                        </a>
+                            {% else %}
+                                {% include 'album/addNamePhoto.html.twig' %}
+                            {% endif %}
+                        </figure>
                     </div>
                 {% endfor %}
             </div>

@@ -44,6 +44,13 @@ a:hover {
 
 
 
+/**
+ESPECIGICS
+ */
+
+
+
+
 
 
 /**
@@ -114,6 +121,11 @@ CUSTOM TEXTS
     opacity: .8;
     font-size: .9rem;
     font-style: italic;
+}
+.info {
+    font-weight: 600;
+    color: grey;
+    font-size: .75rem;
 }
 
 

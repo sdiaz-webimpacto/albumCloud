@@ -30,6 +30,7 @@ class AlbumController extends LayoutController
         {
             return $this->addPhotos($request);
         }
+
         return $this->indexPage($request);
     }
 
@@ -103,5 +104,33 @@ class AlbumController extends LayoutController
             );
             return $response;
         }
+    }
+    #[Route('/album/{id}/addPhotoName', name: 'app_album_photo_name')]
+    public function addPhotoName(Request $request): Response
+    {
+
+        if ($_POST) {
+            if(!empty($_POST['name']) && !empty($_POST['photo']))
+            {
+                $em = $this->entityManager;
+                $photo = $em->getRepository(Photos::class)->find($_POST['photo']);
+                $photo->setName($_POST['name']);
+                $em->flush();
+                $response = new Response('ok',
+                    Response::HTTP_OK,
+                    array('content-type' => 'text/html'));
+            } else {
+                $response = new Response('vacio',
+                    Response::HTTP_OK,
+                    array('content-type' => 'text/html')
+                );
+            }
+        } else {
+            $response = new Response('error',
+                Response::HTTP_OK,
+                array('content-type' => 'text/html')
+            );
+        }
+        return $response;
     }
 }
